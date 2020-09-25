@@ -1,5 +1,5 @@
 // declare minutes
-var mins = 52;
+var mins = 2;
 
 // calculate seconds
 var secs = mins * 60;
@@ -26,9 +26,11 @@ function decrement() {
         seconds.value = getSeconds();
     }
 
+
+
     // alert if seconds become zero
     if (mins < 0) {
-        alert ('times up');
+        alert('times up');
         minutes.value = 0;
         seconds.value = 0;
     } else {
@@ -38,13 +40,13 @@ function decrement() {
     }
 }
 
-// getMinutes function gets the minutes
+// getMinutes function gets minutes
 function getMinutes() {
-    mins = Math.floor(secs/60);
+    mins = Math.floor(secs / 60);
     return mins;
 }
 
-// getSeconds function gets the seconds
+// getSeconds function gets seconds
 function getSeconds() {
     return secs - Math.round(mins * 60);
 }
