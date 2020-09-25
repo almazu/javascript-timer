@@ -51,6 +51,17 @@ function getSeconds() {
     return secs - Math.round(mins * 60);
 }
 
+function togglePause(element) {
+    if (element.className == 'pause-btn') {
+        element.className = 'start-btn';
+        element.innerHTML = 'Start';
+    } else {
+        element.className = 'pause-btn';
+        element.value = 'Pause';
+        element.innerHTML = 'Pause';
+    }
+}
+
 // event listener runs countdown() function when Start button is clicked
 const startBtn = document.querySelector('.start-btn');
 startBtn.addEventListener('click', event => {
