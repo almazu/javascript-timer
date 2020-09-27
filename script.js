@@ -7,6 +7,9 @@ function timer(minutes, color) {
     const minutesBox = document.querySelector('.minutes');
     const secondsBox = document.querySelector('.seconds');
 
+    // clear previous interval
+    clearInterval(interval);
+
     // set background color
     setBackgroundColor(color);
 
@@ -51,6 +54,8 @@ function setBackgroundColor(color) {
 // Work for 52 minutes
 const workBtn = document.querySelector('.work-btn');
 workBtn.addEventListener('click', event => {
+
+    // length of timer
     lapse = 52;
 
     // call timer function
@@ -61,6 +66,8 @@ workBtn.addEventListener('click', event => {
 // Take a break for 17 minutes
 const breakBtn = document.querySelector('.break-btn');
 breakBtn.addEventListener('click', event => {
+    
+    // length of timer
     lapse = 17;
     
     // call timer function
