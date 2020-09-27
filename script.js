@@ -86,6 +86,6 @@ breakBtn.addEventListener('click', event => {
 // Stop button event listener
 const stopBtn = document.querySelector('.stop-btn');
 stopBtn.addEventListener('click', event => {  
-    changeBackgroundColor("linear-gradient(grey,silver)");
+    changeBackgroundColor("linear-gradient(grey,gainsboro)");
     clearInterval(interval);
 });
