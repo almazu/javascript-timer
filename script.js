@@ -1,9 +1,36 @@
 var secs = 0;
 var mins = 0;
+var lapse = 0;
 var interval;
 
-minutesBox = document.querySelector('.minutes');
-secondsBox = document.querySelector('.seconds');
+function timer(minutes, color) {
+    const minutesBox = document.querySelector('.minutes');
+    const secondsBox = document.querySelector('.seconds');
+
+    // set background color
+    setBackgroundColor(color);
+
+    // calculate seconds
+    secs = minutes * 60;
+
+    interval = setInterval(function () {
+        // decrement seconds
+        secs--;
+
+        // display minutes and seconds
+        // if less than ten include a zero in the tenths place
+        minutesBox.value = minutes < 10 ? "0" + getMinutes() : getMinutes();
+        secondsBox.value = getSeconds() < 10 ? ":0" + getSeconds() : ":" + getSeconds();
+
+        // end when seconds reach zero
+        // alert time up
+        if (!secs) {
+            clearInterval(interval, 1000);
+            alert("Time's up");
+        }
+
+    }, 1000)
+}
 
 // function gets minutes
 function getMinutes() {
@@ -16,76 +43,33 @@ function getSeconds() {
     return secs - Math.round(mins * 60);
 }
 
-// function changes background color
-function changeBackgroundColor(color) {
+// function sets background color
+function setBackgroundColor(color) {
     document.body.style.background = color;
 }
 // Start button event listener
+// Work for 52 minutes
 const workBtn = document.querySelector('.work-btn');
 workBtn.addEventListener('click', event => {
-    // change background color
-    changeBackgroundColor("linear-gradient(to bottom right, #FF0401, #820541)");
+    lapse = 52;
 
-    // declare minutes
-    var mins = 52;
-
-    // calculate seconds
-    secs = mins * 60;
-
-    interval = setInterval(function () {
-        // decrement seconds
-        secs--;
-
-        // display minutes and seconds
-        // if less than ten include a zero in the tenths place
-        minutesBox.value = mins < 10 ? "0" + getMinutes() : getMinutes();
-        secondsBox.value = getSeconds() < 10 ? ":0" + getSeconds() : ":" + getSeconds();
-
-        // end when seconds reach zero
-        // alert time up
-        if (!secs) {
-            clearInterval(interval, 1000);
-            alert("Time's up! Take a break.");
-        }
-
-    }, 1000)
+    // call timer function
+    timer(lapse, "linear-gradient(to bottom right, #FF0401, #820541)");
 });
 
 // Break button event listener
-// event listener runs countdown() function when Start button is clicked
+// Take a break for 17 minutes
 const breakBtn = document.querySelector('.break-btn');
 breakBtn.addEventListener('click', event => {
-    // change background color
-    changeBackgroundColor("linear-gradient(to bottom right, #7a7fba, #11c37c)");
-
-    // declare minutes
-    var mins = 17;
-
-    // calculate seconds
-    secs = mins * 60;
-
-    interval = setInterval(function () {
-        // decrement seconds
-        secs--;
-
-        // display minutes and seconds
-        // if less than ten include a zero in the tenths place
-        minutesBox.value = mins < 10 ? "0" + getMinutes() : getMinutes();
-        secondsBox.value = getSeconds() < 10 ? ":0" + getSeconds() : ":" + getSeconds();
-
-        // end when seconds reach zero
-        // alert time up
-        if (!secs) {
-            clearInterval(interval, 1000);
-            alert("Time's up! Get to work.");
-        }
-
-    }, 1000)
+    lapse = 17;
+    
+    // call timer function
+    timer(lapse, "linear-gradient(to bottom right, #7a7fba, #11c37c)");
 });
 
 // Stop button event listener
 const stopBtn = document.querySelector('.stop-btn');
-stopBtn.addEventListener('click', event => {  
-    changeBackgroundColor("linear-gradient(grey,gainsboro)");
+stopBtn.addEventListener('click', event => {
+    setBackgroundColor("linear-gradient(grey,gainsboro)");
     clearInterval(interval);
 });
