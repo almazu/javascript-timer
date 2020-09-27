@@ -1,8 +1,9 @@
-body {
-    background: linear-gradient(#e66465, #9198e5);
+html, body {
+    background: linear-gradient(to bottom right, #7a7fba, #11c37c);
+    height: 100%;
 }
 
-html, body { height: 100%; }
+body { margin: 0; }
 
 /* center horizontal */
 main {
@@ -13,33 +14,24 @@ main {
     margin-right:auto;
 }
 
-/* centr vertical */
+/* center vertical */
 .timer {
-    margin: 0;
     position: absolute;
     top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    transform: translate(10%, -50%);
 }
 
 .minutes, .seconds {
-    font-size: 200px;
-    height: 220px;
-    width: 220px;
+    font-size: 150px;
+    width: 40%;
     text-align: center;
     border: none;
+    border-radius: 25px;
 }
 
-p { 
-    display: inline; 
-    font-size: 160px; 
-}
-
-.start-btn, .reset-btn {
-    border-radius: 10px;
-    font-size: 40px;
+button {
+    border-radius: 20px;
+    font-size: 20px;
     height: 50px;
-    width: 49%;
     margin-top: 10px;
-    background-color: #efedf7;
 }
